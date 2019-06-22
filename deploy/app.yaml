@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: pokemongo
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: pokemongo
+  template:
+    metadata:
+      labels:
+        app: pokemongo
+    spec:
+      containers:
+      - image: gcr.io/symbolic-object-244412/pokemongo:v1
+        name: pokemongo
+        ports:
+        - containerPort: 80
