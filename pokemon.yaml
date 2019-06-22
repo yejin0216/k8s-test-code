@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: pokemongo-rc
+spec:
+  replicas: 3
+  selector:
+    app: pokemongo
+  template:
+    metadata:
+      name: pokemongo-pod
+      labels:
+        app: pokemongo
+    spec:
+      containers:
+      - name: pokemongo
+        image: gcr.io/symbolic-object-244412/pokemongo
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
